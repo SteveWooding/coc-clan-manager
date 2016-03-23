@@ -14,7 +14,8 @@ if __name__ == '__main__':
 
     if os.path.isfile('cocman.db') is False:
         create_db(app.config['DATABASE_URL'])
-        update_database(app.config['MAIN_CLAN_TAG'])
+
+    update_database(app.config['MAIN_CLAN_TAG'])
 
     app.debug = True
     app.run(host='0.0.0.0', port=8000)
