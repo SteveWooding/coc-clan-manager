@@ -19,7 +19,12 @@ def update_database(clan_tag):
     coc_api = ClashOfClans(app.config['COC_API_KEY'])
     clan_data = coc_api.clans(clan_tag).get()
 
-    # Create or update clan details
+    # Should get a reponse code of 200, otherwise an error
+    # occurred with the API request.
+    if clan_data.status_code != 200:
+        print "Error get data from API. Aborting..."
+        return
+
     try:
         # Get clan object to be updated
         clan = session.query(Clan).filter_by(tag=clan_tag).one()
