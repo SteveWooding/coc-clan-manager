@@ -73,4 +73,13 @@ def create_db(database_url):
     """Create an empty database with the tables defined above."""
     engine = create_engine(database_url)
     Base.metadata.create_all(engine)
+
+    # Create a Null Clan to store members that not in a tracked.
+    from cocman.connect_to_database import connect_to_database
+    null_clan = Clan(name='Null Clan', tag='#NULL')
+    session = connect_to_database()
+    session.add(null_clan)
+    session.commit()
+    session.close()
+
     print "Empty database created..."
