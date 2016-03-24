@@ -12,6 +12,7 @@ from cocman.connect_to_database import connect_to_database
 
 def update_database(clan_tag):
     """Update the database with the given clan tag."""
+    print "update_database() called..."
     # Connect to the database
     session = connect_to_database()
 
@@ -54,6 +55,12 @@ def update_database(clan_tag):
             # Get member object to be updated
             member = (session.query(Member)
                 .filter_by(tag=member_data['tag']).one())
+
+            # Check if the member was in another clan at the
+            # time of the last API query.
+            if member.clan_id != clan.id:
+                # Move the member into this clan.
+                member.clan = clan
 
             # Update required fields
             member.name = member_data['name']
