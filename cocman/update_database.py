@@ -48,6 +48,10 @@ def update_database(clan_tag):
     # Extract the members list data
     members_data = clan_data['memberList']
 
+    # Empty list to store the current member tags for later
+    # comparison with the database.
+    current_member_tags = []
+
     # Loop through the current members of the clan
     for member_data in members_data:
         # Create or update member details
@@ -81,6 +85,9 @@ def update_database(clan_tag):
         member.league_id = member_data['league']['id']
         member.clan_rank = member_data['clanRank']
         member.previous_clan_rank = member_data['previousClanRank']
+
+        # Add this member to the current member tags list.
+        current_member_tags.append(member_data['tag'])
 
         # Update the current and total donations
         if member.current_donations:
@@ -132,6 +139,23 @@ def update_database(clan_tag):
 
         # Commit the member object to the database
         session.add(member)
+        session.commit()
+
+    # Check if any members have left the clan. If so, move them to the Null Clan
+    previous_member_tags = session.query(Member.tag).filter_by(clan=clan).all()
+    previous_member_tags = set([tag for (tag,) in previous_member_tags])
+    current_member_tags = set(current_member_tags)
+
+    # Use sets to see who was previously in the clan and now is not.
+    left_member_tags = list(previous_member_tags.difference(
+        current_member_tags))
+
+    # Move the missing members into the Null Clan
+    null_clan = session.query(Clan).filter_by(tag='#NULL').one()
+    for tag in left_member_tags:
+        left_member = session.query(Member).filter_by(tag=tag).one()
+        left_member.clan = null_clan
+        session.add(left_member)
         session.commit()
 
     # Close the database session
