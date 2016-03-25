@@ -155,6 +155,8 @@ def update_database(clan_tag):
     for tag in left_member_tags:
         left_member = session.query(Member).filter_by(tag=tag).one()
         left_member.clan = null_clan
+        left_member.clan_rank = 0
+        left_member.previous_clan_rank = 0
         session.add(left_member)
         session.commit()
 
