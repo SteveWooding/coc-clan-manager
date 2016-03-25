@@ -63,6 +63,7 @@ class Member(Base):
     current_donations_rec = Column(Integer)
     total_donations = Column(Integer)
     total_donations_rec = Column(Integer)
+    first_tracked_time = Column(DateTime)
     last_active_time = Column(DateTime)
 
     clan_id = Column(Integer, ForeignKey('clan.id'))
