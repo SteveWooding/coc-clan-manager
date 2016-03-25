@@ -12,7 +12,6 @@ from cocman.connect_to_database import connect_to_database
 
 def update_database(clan_tag):
     """Update the database with the given clan tag."""
-    print "update_database() called..."
     # Connect to the database
     session = connect_to_database()
 
@@ -78,7 +77,8 @@ def update_database(clan_tag):
                 tag=member_data['tag'],
                 name=member_data['name'],
                 role=member_data['role'],
-                exp_level=member_data['expLevel']
+                exp_level=member_data['expLevel'],
+                first_tracked_time=datetime.datetime.now()
             )
 
         # Update optional member data
