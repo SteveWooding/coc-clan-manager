@@ -46,6 +46,8 @@ class Member(Base):
         current_donations_rec (int): Number of troops received this season.
         total_donations (int): Total number of troops donated.
         total_donations_rec (int): Total number of troops received.
+        first_tracked_time (datetime): Time when a new member is added to DB.
+        last_active_time (datetime): Time when a member was last active.
         clan_id (int): ID of the clan the player is a member of.
         clan: Makes a relationship between a member and a clan.
     """
