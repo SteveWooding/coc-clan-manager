@@ -14,7 +14,16 @@ class Clan(Base):
         __tablename__: A string naming the underlining SQL table.
         id (int): Internal ID number of the clan.
         name (str): Name of the clan.
-        tag: The Supercell assigned ID for the clan (globally unique).
+        tag (str): The Supercell assigned ID for the clan (globally unique).
+        badge_url_medium (str): Medium sized clan badge graphic.
+        badge_url_small (str): Small sized clan badge graphic.
+        clan_level (int): The level of the clan.
+        war_wins (int): Number of war wins the clan has achieved.
+        war_win_streak (int): Number of war wins in a row.
+        clan_points (int): The total points of the clan.
+        required_trophies (int): Number of trophies required to join the clan.
+        num_members (int): The number of members in the clan.
+        members (Member): Member objects that are in this clan.
     """
     __tablename__ = 'clan'
 
@@ -56,7 +65,7 @@ class Member(Base):
         first_tracked_time (datetime): Time when a new member is added to DB.
         last_active_time (datetime): Time when a member was last active.
         clan_id (int): ID of the clan the player is a member of.
-        clan: Makes a relationship between a member and a clan.
+        clan (Clan): Makes a relationship between a member and a clan.
     """
     __tablename__ = 'member'
 
