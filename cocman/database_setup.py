@@ -23,6 +23,13 @@ class Clan(Base):
     tag = Column(String(20), unique=True, nullable=False)
     badge_url_medium = Column(String(256))
     badge_url_small = Column(String(256))
+    clan_level = Column(Integer)
+    war_wins = Column(Integer)
+    war_win_streak = Column(Integer)
+    clan_points = Column(Integer)
+    required_trophies = Column(Integer)
+    num_members = Column(Integer)
+
     members = relationship('Member', cascade="save-update, merge, delete")
 
 
