@@ -41,6 +41,24 @@ class Clan(Base):
 
     members = relationship('Member', cascade="save-update, merge, delete")
 
+    @property
+    def serialise(self):
+        """Returns clan data in serialised format for JSON output."""
+        return {
+            'id': self.id,
+            'name': self.name,
+            'tag': self.tag,
+            'badgeUrlMedium': self.badge_url_medium,
+            'badgeUrlSmall': self.badge_url_small,
+            'clanLevel': self.clan_level,
+            'warWins': self.war_wins,
+            'warWinStreak': self.war_win_streak,
+            'clanPoints': self.clan_points,
+            'requiredTrophies': self.required_trophies,
+            'numMembers': self.num_members,
+            'memberList' : [i.serialise for i in self.members]
+        }
+
 
 class Member(Base):
     """Define a database table of members, or players, of CoC.
@@ -86,6 +104,26 @@ class Member(Base):
 
     clan_id = Column(Integer, ForeignKey('clan.id'))
     clan = relationship(Clan)
+
+    @property
+    def serialise(self):
+        """Returns member data in serialised format for JSON output."""
+        return {
+            'id': self.id,
+            'tag': self.tag,
+            'name': self.name,
+            'role': self.role,
+            'expLevel': self.exp_level,
+            'leagueId': self.league_id,
+            'clanRank': self.clan_rank,
+            'previousClanRank': self.previous_clan_rank,
+            'currentDonations': self.current_donations,
+            'currentDonationsRec': self.current_donations_rec,
+            'totalDonations': self.total_donations,
+            'totalDonationsRec': self.total_donations_rec,
+            'firstTrackedTime': self.first_tracked_time,
+            'lastActiveTime': self.last_active_time
+        }
 
 
 def create_db(database_url):
