@@ -28,8 +28,8 @@ def clandata_json(clan_tag=None):
     except NoResultFound:
         session.close()
         error_msg = 'Clan with tag ' + clan_tag + ' not found!'
-        return jsonify(status=501, error=error_msg)
+        return jsonify(status=500, error=error_msg)
 
-    json_output = jsonify(clan.serialise, status=200)
+    json_output = jsonify(clanData=clan.serialise, status=200)
     session.close()
     return json_output
