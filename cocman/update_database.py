@@ -36,9 +36,16 @@ def update_database(clan_tag):
             tag=clan_data['tag']
         )
 
-    # Update optional data items
+    # Update optional clan data items
     clan.badge_url_medium = clan_data['badgeUrls']['medium']
     clan.badge_url_small = clan_data['badgeUrls']['small']
+    clan.clan_level = clan_data['clanLevel']
+    clan.clan_points = clan_data['clanPoints']
+    clan.num_members = clan_data['members']
+    clan.war_wins = clan_data['warWins']
+    clan.war_win_streak = clan_data['warWinStreak']
+    clan.required_trophies = clan_data['requiredTrophies']
+
 
     # Commit the clan object to the database
     session.add(clan)
