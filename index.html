@@ -36,10 +36,16 @@
             <span class="sortorder" ng-show="orderCol === 'role'"
                   ng-class="{reverse:reverse}"></span>
           </th>
+          <th ng-click="order('expLevel')">
+            Experience
+            <span class="sortorder" ng-show="orderCol === 'expLevel'"
+                  ng-class="{reverse:reverse}"></span>
+          </th>
         <tr ng-repeat="member in clanData.memberList | orderBy:orderCol:reverse">
           <td>{{member.clanRank}}</td>
           <td>{{member.name}}</td>
           <td>{{member.role}}</td>
+          <td>{{member.expLevel}}</td>
         </tr>
       </table>
 
