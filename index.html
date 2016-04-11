@@ -19,8 +19,14 @@
       <p>Members {{clanData.numMembers}}/50</p>
 
       <table>
+        <tr>
+          <th>Rank</th>
+          <th>Name</th>
+          <th>Role</th>
         <tr ng-repeat="member in clanData.memberList">
+          <td>{{member.clanRank}}</td>
           <td>{{member.name}}</td>
+          <td>{{member.role}}</td>
         </tr>
       </table>
 
