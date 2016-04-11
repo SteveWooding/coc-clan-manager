@@ -66,6 +66,11 @@
             <span class="sortorder" ng-show="orderCol === 'firstTrackedTime'"
                   ng-class="{reverse:reverse}"></span>
           </th>
+          <th ng-click="order('lastActiveTime')">
+            Last Donated
+            <span class="sortorder" ng-show="orderCol === 'lastActiveTime'"
+                  ng-class="{reverse:reverse}"></span>
+          </th>
         </tr>
         <tr ng-repeat="member in clanData.memberList | orderBy:orderCol:reverse">
           <td>{{member.clanRank}}</td>
@@ -77,6 +82,7 @@
           <td>{{member.totalDonations}}</td>
           <td>{{member.totalDonationsRec}}</td>
           <td>{{member.firstTrackedTime | date:'dd-MMM-yy'}}</td>
+          <td>{{member.lastActiveTime | date:'dd-MMM-yy'}}</td>
         </tr>
       </table>
 
