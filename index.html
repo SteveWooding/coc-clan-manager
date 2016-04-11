@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>CoC Clan Manager</title>
+    <link rel="stylesheet" href="/static/css/app.css">
   </head>
 
   <body>
@@ -20,9 +21,21 @@
 
       <table>
         <tr>
-          <th ng-click="order('clanRank')">Rank</th>
-          <th ng-click="order('name')">Name</th>
-          <th ng-click="order('role')">Role</th>
+          <th ng-click="order('clanRank')">
+            Rank
+            <span class="sortorder" ng-show="orderCol === 'clanRank'"
+                  ng-class="{reverse:reverse}"></span>
+          </th>
+          <th ng-click="order('name')">
+            Name
+            <span class="sortorder" ng-show="orderCol === 'name'"
+                  ng-class="{reverse:reverse}"></span>
+          </th>
+          <th ng-click="order('role')">
+            Role
+            <span class="sortorder" ng-show="orderCol === 'role'"
+                  ng-class="{reverse:reverse}"></span>
+          </th>
         <tr ng-repeat="member in clanData.memberList | orderBy:orderCol:reverse">
           <td>{{member.clanRank}}</td>
           <td>{{member.name}}</td>
