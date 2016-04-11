@@ -74,7 +74,7 @@ def update_database(clan_tag):
 
             # Update required fields
             member.name = member_data['name']
-            member.role = member_data['role']
+            member.role = convert_role(member_data['role'])
             member.exp_level = member_data['expLevel']
 
         except NoResultFound:
@@ -83,7 +83,7 @@ def update_database(clan_tag):
                 clan=clan,
                 tag=member_data['tag'],
                 name=member_data['name'],
-                role=member_data['role'],
+                role=convert_role(member_data['role']),
                 exp_level=member_data['expLevel'],
                 first_tracked_time=datetime.datetime.now()
             )
@@ -169,3 +169,13 @@ def update_database(clan_tag):
 
     # Close the database session
     session.close()
+
+
+def convert_role(raw_role):
+    """Convert the roles defined by the API to those used in the game."""
+    roles = {'member': 'Member',
+             'admin': 'Elder',
+             'coLeader': 'Co-leader',
+             'leader': 'Leader'}
+
+    return roles[raw_role]
