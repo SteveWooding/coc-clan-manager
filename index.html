@@ -9,7 +9,7 @@
   <body>
     <h1>Clash of Clans Clan Manager</h1>
     <div id="clanMan" ng-controller="ClanController">
-      <p ng-hide="{{errorMsg === undefined}}">An error has occurred: {{errorMsg}}</p>
+      <p ng-show="errorMsg">An error has occurred: {{errorMsg}}</p>
       <img ng-src="{{clanData.badgeUrlMedium}}">
       <p>{{clanData.clanLevel}}</p>
       <h2>{{clanData.name}}</h2>
@@ -19,7 +19,7 @@
       <p>War Win Streak {{clanData.warWinStreak}}</p>
       <p>Members {{clanData.numMembers}}/50</p>
 
-      <table>
+      <table ng-hide="errorMsg">
         <tr>
           <th ng-click="order('clanRank')">
             Rank
