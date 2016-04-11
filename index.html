@@ -56,6 +56,11 @@
             <span class="sortorder" ng-show="orderCol === 'totalDonations'"
                   ng-class="{reverse:reverse}"></span>
           </th>
+          <th ng-click="order('totalDonationsRec')">
+            Total Troops Received
+            <span class="sortorder" ng-show="orderCol === 'totalDonationsRec'"
+                  ng-class="{reverse:reverse}"></span>
+          </th>
         </tr>
         <tr ng-repeat="member in clanData.memberList | orderBy:orderCol:reverse">
           <td>{{member.clanRank}}</td>
@@ -65,6 +70,7 @@
           <td>{{member.currentDonations}}</td>
           <td>{{member.currentDonationsRec}}</td>
           <td>{{member.totalDonations}}</td>
+          <td>{{member.totalDonationsRec}}</td>
         </tr>
       </table>
 
