@@ -18,6 +18,14 @@
       }
     });
 
+    // Allow users to sort (forwards and backwards) on column headings.
+    $scope.orderCol = 'clanRank';
+    $scope.reverse = false;
+    $scope.order = function(orderCol) {
+      $scope.reverse = ($scope.orderCol === orderCol) ? !$scope.reverse : false;
+      $scope.orderCol = orderCol;
+    };
+
   }]);
 
 

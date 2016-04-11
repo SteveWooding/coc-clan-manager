@@ -20,10 +20,10 @@
 
       <table>
         <tr>
-          <th>Rank</th>
-          <th>Name</th>
-          <th>Role</th>
-        <tr ng-repeat="member in clanData.memberList">
+          <th ng-click="order('clanRank')">Rank</th>
+          <th ng-click="order('name')">Name</th>
+          <th ng-click="order('role')">Role</th>
+        <tr ng-repeat="member in clanData.memberList | orderBy:orderCol:reverse">
           <td>{{member.clanRank}}</td>
           <td>{{member.name}}</td>
           <td>{{member.role}}</td>
