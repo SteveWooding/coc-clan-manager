@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html ng-app="clanMan">
+  <head>
+    <meta charset="utf-8">
+    <title>CoC Clan Manager</title>
+  </head>
+
+  <body>
+    <h1>Clash of Clans Clan Manager</h1>
+    <div id="clanMan" ng-controller="ClanController">
+      <p ng-hide="{{errorMsg === undefined}}">An error has occurred: {{errorMsg}}</p>
+      <img ng-src="{{clanData.badgeUrlMedium}}">
+      <p>{{clanData.clanLevel}}</p>
+      <h2>{{clanData.name}}</h2>
+      <h3>{{clanData.tag}}</h3>
+      <p>Total points {{clanData.clanPoints}}<p>
+      <p>Wars Won {{clanData.warWins}}</p>
+      <p>War Win Streak {{clanData.warWinStreak}}</p>
+      <p>Members {{clanData.numMembers}}/50</p>
+
+      <table>
+        <tr ng-repeat="member in clanData.memberList">
+          <td>{{member.name}}</td>
+        </tr>
+      </table>
+
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
+    <script src="/static/js/app.js"></script>
+  </body>
+</html>
