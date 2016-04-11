@@ -1,4 +1,5 @@
 """Database setup for the CoC Clan Manager project."""
+from time import strftime
 from sqlalchemy import Column, ForeignKey, Integer, String, DateTime
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship
@@ -121,8 +122,8 @@ class Member(Base):
             'currentDonationsRec': self.current_donations_rec,
             'totalDonations': self.total_donations,
             'totalDonationsRec': self.total_donations_rec,
-            'firstTrackedTime': self.first_tracked_time,
-            'lastActiveTime': self.last_active_time
+            'firstTrackedTime': self.first_tracked_time.strftime('%Y-%m-%dT%H:%M:%SZ'),
+            'lastActiveTime': self.last_active_time.strftime('%Y-%m-%dT%H:%M:%SZ')
         }
 
 
