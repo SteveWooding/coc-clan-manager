@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
           integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7"
           crossorigin="anonymous">
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Exo:400,800'>
     <link rel="stylesheet" href="/static/css/app.css">
 
     <title>CoC Clan Manager</title>
@@ -17,14 +18,26 @@
       <h1>Clash of Clans Clan Manager</h1>
       <div id="clanMan" ng-controller="ClanController">
         <p ng-show="errorMsg">An error has occurred: {{errorMsg}}</p>
-        <img ng-src="{{clanData.badgeUrlMedium}}">
-        <p>{{clanData.clanLevel}}</p>
-        <h2>{{clanData.name}}</h2>
-        <h3>{{clanData.tag}}</h3>
-        <p>Total points {{clanData.clanPoints}}<p>
-        <p>Wars Won {{clanData.warWins}}</p>
-        <p>War Win Streak {{clanData.warWinStreak}}</p>
-        <p>Members {{clanData.numMembers}}/50</p>
+        <div class="row">
+          <div class="col-sm-6">
+            <img ng-src="{{clanData.badgeUrlMedium}}" class="img-responsive center-block">
+            <h1 class="clan-level">Level {{clanData.clanLevel}}</h1>
+          </div>
+          <div class="col-sm-3 col-xs-6">
+            <h2>{{clanData.name}}</h2>
+            <h4>Total points</h4>
+            <h4>Wars Won</h4>
+            <h4>War Win Streak</h4>
+            <h4>Members</h4>
+          </div>
+          <div class="col-sm-3 col-xs-6 text-right">
+            <h3>{{clanData.tag}}</h3>
+            <h4>{{clanData.clanPoints}}</h4>
+            <h4>{{clanData.warWins}}</h4>
+            <h4>{{clanData.warWinStreak}}</h4>
+            <h4>{{clanData.numMembers}}/50</h4>
+          </div>
+        </div>
 
         <table ng-hide="errorMsg">
           <tr>
