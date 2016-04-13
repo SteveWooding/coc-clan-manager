@@ -20,8 +20,9 @@
         <p ng-show="errorMsg">An error has occurred: {{errorMsg}}</p>
         <div class="row">
           <div class="col-sm-6">
-            <img ng-src="{{clanData.badgeUrlMedium}}" class="img-responsive center-block">
-            <h1 class="clan-level">Level {{clanData.clanLevel}}</h1>
+              <img ng-src="{{clanData.badgeUrlMedium}}" class="img-responsive center-block"
+                   id="clan-shield">
+              <h1 class="clan-level">Level {{clanData.clanLevel}}</h1>
           </div>
           <div class="col-sm-3 col-xs-6">
             <h3>{{clanData.name}}</h3>
