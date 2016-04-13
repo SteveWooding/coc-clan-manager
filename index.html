@@ -49,6 +49,7 @@
                   <span class="sortorder" ng-show="orderCol === 'clanRank'"
                         ng-class="{reverse:reverse}"></span>
                 </th>
+                <th>League</th>
                 <th ng-click="order('name')">
                   Name
                   <span class="sortorder" ng-show="orderCol === 'name'"
@@ -98,6 +99,7 @@
             </thead>
             <tr ng-repeat="member in clanData.memberList | orderBy:orderCol:reverse">
               <td>{{member.clanRank}}</td>
+              <td><img ng-src="{{getShieldImg(member.leagueId)}}"></td>
               <td>{{member.name}}</td>
               <td>{{member.role}}</td>
               <td class="hidden-xs">{{member.expLevel}}</td>
