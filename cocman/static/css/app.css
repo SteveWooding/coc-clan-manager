@@ -17,6 +17,10 @@ table {
     margin: 0 auto;
 }
 
+.table > tbody > tr > td {
+    vertical-align: middle;
+}
+
 .clan-level {
     text-align: center;
     margin-top: -0.8em;
