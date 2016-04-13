@@ -97,21 +97,23 @@
                 </th>
               </tr>
             </thead>
-            <tr ng-repeat="member in clanData.memberList | orderBy:orderCol:reverse">
-              <td>{{member.clanRank}}</td>
-              <td><img ng-src="{{getShieldImg(member.leagueId)}}"></td>
-              <td>{{member.name}}</td>
-              <td>{{member.role}}</td>
-              <td class="hidden-xs">{{member.expLevel}}</td>
-              <td class="hidden-xs">{{member.currentDonations}}</td>
-              <td class="hidden-xs">{{member.currentDonationsRec}}</td>
-              <td>{{member.totalDonations}}</td>
-              <td>{{member.totalDonationsRec}}</td>
-              <td class="hidden-xs hidden-sm">
-                {{member.firstTrackedTime | date:'dd-MMM-yy'}}
-              </td>
-              <td>{{member.lastActiveTime | date:'dd-MMM-yy'}}</td>
-            </tr>
+            <tbody>
+              <tr ng-repeat="member in clanData.memberList | orderBy:orderCol:reverse">
+                <td>{{member.clanRank}}</td>
+                <td><img ng-src="{{getShieldImg(member.leagueId)}}"></td>
+                <td>{{member.name}}</td>
+                <td>{{member.role}}</td>
+                <td class="hidden-xs">{{member.expLevel}}</td>
+                <td class="hidden-xs">{{member.currentDonations}}</td>
+                <td class="hidden-xs">{{member.currentDonationsRec}}</td>
+                <td>{{member.totalDonations}}</td>
+                <td>{{member.totalDonationsRec}}</td>
+                <td class="hidden-xs hidden-sm">
+                  {{member.firstTrackedTime | date:'dd-MMM-yy'}}
+                </td>
+                <td>{{member.lastActiveTime | date:'dd-MMM-yy'}}</td>
+              </tr>
+            </tbody>
           </table>
         </div>
 
