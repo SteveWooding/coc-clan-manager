@@ -59,17 +59,17 @@
                   <span class="sortorder" ng-show="orderCol === 'role'"
                         ng-class="{reverse:reverse}"></span>
                 </th>
-                <th ng-click="order('expLevel')">
+                <th class="hidden-xs" ng-click="order('expLevel')">
                   Experience
                   <span class="sortorder" ng-show="orderCol === 'expLevel'"
                         ng-class="{reverse:reverse}"></span>
                 </th>
-                <th ng-click="order('currentDonations')">
+                <th class="hidden-xs" ng-click="order('currentDonations')">
                   Season <br> Troops <br> Donated
                   <span class="sortorder" ng-show="orderCol === 'currentDonations'"
                         ng-class="{reverse:reverse}"></span>
                 </th>
-                <th ng-click="order('currentDonationsRec')">
+                <th class="hidden-xs" ng-click="order('currentDonationsRec')">
                   Season <br> Troops <br> Received
                   <span class="sortorder" ng-show="orderCol === 'currentDonationsRec'"
                         ng-class="{reverse:reverse}"></span>
@@ -84,7 +84,7 @@
                   <span class="sortorder" ng-show="orderCol === 'totalDonationsRec'"
                         ng-class="{reverse:reverse}"></span>
                 </th>
-                <th ng-click="order('firstTrackedTime')">
+                <th class="hidden-xs hidden-sm" ng-click="order('firstTrackedTime')">
                   First Tracked
                   <span class="sortorder" ng-show="orderCol === 'firstTrackedTime'"
                         ng-class="{reverse:reverse}"></span>
@@ -100,12 +100,14 @@
               <td>{{member.clanRank}}</td>
               <td>{{member.name}}</td>
               <td>{{member.role}}</td>
-              <td>{{member.expLevel}}</td>
-              <td>{{member.currentDonations}}</td>
-              <td>{{member.currentDonationsRec}}</td>
+              <td class="hidden-xs">{{member.expLevel}}</td>
+              <td class="hidden-xs">{{member.currentDonations}}</td>
+              <td class="hidden-xs">{{member.currentDonationsRec}}</td>
               <td>{{member.totalDonations}}</td>
               <td>{{member.totalDonationsRec}}</td>
-              <td>{{member.firstTrackedTime | date:'dd-MMM-yy'}}</td>
+              <td class="hidden-xs hidden-sm">
+                {{member.firstTrackedTime | date:'dd-MMM-yy'}}
+              </td>
               <td>{{member.lastActiveTime | date:'dd-MMM-yy'}}</td>
             </tr>
           </table>
