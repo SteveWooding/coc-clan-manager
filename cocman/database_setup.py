@@ -119,7 +119,7 @@ class Member(Base):
             'expLevel': self.exp_level,
             'leagueId': self.league_id,
             'leagueName': self.league_name,
-            'league_icon_tiny': self.league_icon_tiny,
+            'leagueIconTiny': self.league_icon_tiny,
             'clanRank': self.clan_rank,
             'previousClanRank': self.previous_clan_rank,
             'currentDonations': self.current_donations,
