@@ -94,6 +94,8 @@ class Member(Base):
     role = Column(String(8), nullable=False)
     exp_level = Column(Integer, nullable=False)
     league_id = Column(Integer)
+    league_name = Column(String(64))
+    league_icon_tiny = Column(String(256))
     clan_rank = Column(Integer)
     previous_clan_rank = Column(Integer)
     current_donations = Column(Integer)
@@ -116,6 +118,8 @@ class Member(Base):
             'role': self.role,
             'expLevel': self.exp_level,
             'leagueId': self.league_id,
+            'leagueName': self.league_name,
+            'league_icon_tiny': self.league_icon_tiny,
             'clanRank': self.clan_rank,
             'previousClanRank': self.previous_clan_rank,
             'currentDonations': self.current_donations,

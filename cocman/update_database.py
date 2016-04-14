@@ -85,11 +85,14 @@ def update_database(clan_tag):
                 name=member_data['name'],
                 role=convert_role(member_data['role']),
                 exp_level=member_data['expLevel'],
-                first_tracked_time=datetime.datetime.now()
+                first_tracked_time=datetime.datetime.now(),
+                last_active_time=datetime.datetime.now()
             )
 
         # Update optional member data
         member.league_id = member_data['league']['id']
+        member.league_name = member_data['league']['name']
+        member.league_icon_tiny = member_data['league']['iconUrls']['tiny']
         member.clan_rank = member_data['clanRank']
         member.previous_clan_rank = member_data['previousClanRank']
 
