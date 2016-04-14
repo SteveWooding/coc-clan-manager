@@ -10,16 +10,10 @@
 
     // Get the default clan data
     $http.get('/clandata/mainclan/JSON/')
-      .success(function(data) {
-        if (data.status === 200) {
-          $scope.clanData = data.clanData;
-        }
-        else {
-          $scope.errorMsg = data.error;
-        }
-      })
-      .error(function () {
-        $scope.errorMsg = 'Whoops! Internal Server. Sorry. ¯\\_(ツ)_/¯';
+      .then(function (response) {
+          $scope.clanData = response.data;
+      }, function (response) {
+        $scope.errorMsg = response.statusText + ': ' + response.data.error;
       });
 
     // Allow users to sort (forwards and backwards) on column headings.
