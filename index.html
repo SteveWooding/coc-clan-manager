@@ -17,8 +17,8 @@
     <div class="container">
       <h1>Clash of Clans Clan Manager</h1>
       <div id="clanMan" ng-controller="ClanController">
-        <p ng-show="errorMsg">An error has occurred: {{errorMsg}}</p>
-        <div class="row">
+        <h2 class="bg-danger" ng-show="errorMsg">An error has occurred: {{errorMsg}}</h2>
+        <div class="row" ng-hide="errorMsg">
           <div class="col-sm-6">
               <img ng-src="{{clanData.badgeUrlMedium}}" class="img-responsive center-block"
                    id="clan-shield">

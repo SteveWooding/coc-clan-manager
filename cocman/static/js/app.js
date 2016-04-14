@@ -9,14 +9,18 @@
     $scope.clanData = {};
 
     // Get the default clan data
-    $http.get('/clandata/mainclan/JSON/').success(function(data) {
-      if (data.status === 200) {
-        $scope.clanData = data.clanData;
-      }
-      else {
-        $scope.errorMsg = data.error;
-      }
-    });
+    $http.get('/clandata/mainclan/JSON/')
+      .success(function(data) {
+        if (data.status === 200) {
+          $scope.clanData = data.clanData;
+        }
+        else {
+          $scope.errorMsg = data.error;
+        }
+      })
+      .error(function () {
+        $scope.errorMsg = 'Whoops! Internal Server. Sorry. ¯\\_(ツ)_/¯';
+      });
 
     // Allow users to sort (forwards and backwards) on column headings.
     $scope.orderCol = 'clanRank';
