@@ -99,7 +99,7 @@
             <tbody>
               <tr ng-repeat="member in clanData.memberList | orderBy:orderCol:reverse">
                 <td>{{member.clanRank}}</td>
-                <td><img ng-src="{{getShieldImg(member.leagueId)}}"></td>
+                <td><img ng-src="{{member.leagueIconTiny}}" title="{{member.leagueName}}"></td>
                 <td>{{member.name}}</td>
                 <td>{{member.role}}</td>
                 <td class="hidden-xs">{{member.expLevel}}</td>
