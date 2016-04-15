@@ -22,7 +22,7 @@ def update_database(clan_tag):
     # Should get a reponse code of 200, otherwise an error
     # occurred with the API request.
     if clan_data.status_code != 200:
-        print "Error get data from API. Aborting..."
+        print "Error getting data from API. Aborting..."
         return
 
     try:
