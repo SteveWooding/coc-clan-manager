@@ -7,9 +7,10 @@ from cocman.update_database import update_database
 @app.route('/')
 def index():
     if app.debug:
-        return make_response(open('index.html').read())
+        return make_response(open(app.config['INSTALL_PATH'] +
+            '/cocman/static/index.html').read())
     else:
-        return send_file('index.html')
+        return app.send_static_file('index.html')
 
 
 @app.route('/update/<update_key>/')
