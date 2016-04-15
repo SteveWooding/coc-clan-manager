@@ -137,11 +137,14 @@ def create_db(database_url):
     Base.metadata.create_all(engine)
 
     # Create a Null Clan to store members that not in a tracked.
+    from sqlalchemy import exists
     from cocman.connect_to_database import connect_to_database
-    null_clan = Clan(name='Null Clan', tag='#NULL')
     session = connect_to_database()
-    session.add(null_clan)
-    session.commit()
-    session.close()
+    (already_exists, ), = session.query(exists().where(Clan.tag == '#NULL'))
 
-    print "Empty database created..."
+    if already_exists is False:
+        null_clan = Clan(name='Null Clan', tag='#NULL')
+        session.add(null_clan)
+        session.commit()
+
+    session.close()
