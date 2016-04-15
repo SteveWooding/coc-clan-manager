@@ -29,8 +29,8 @@ class Clan(Base):
     __tablename__ = 'clan'
 
     id = Column(Integer, primary_key=True)
-    name = Column(String(50), nullable=False)
-    tag = Column(String(20), unique=True, nullable=False)
+    name = Column(String(64), nullable=False)
+    tag = Column(String(16), unique=True, nullable=False)
     badge_url_medium = Column(String(256))
     badge_url_small = Column(String(256))
     clan_level = Column(Integer)
@@ -89,9 +89,9 @@ class Member(Base):
     __tablename__ = 'member'
 
     id = Column(Integer, primary_key=True)
-    tag = Column(String(20), unique=True, nullable=False)
-    name = Column(String(50), nullable=False)
-    role = Column(String(8), nullable=False)
+    tag = Column(String(16), unique=True, nullable=False)
+    name = Column(String(64), nullable=False)
+    role = Column(String(16), nullable=False)
     exp_level = Column(Integer, nullable=False)
     league_id = Column(Integer)
     league_name = Column(String(64))
