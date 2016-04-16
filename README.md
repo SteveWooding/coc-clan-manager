@@ -2,7 +2,7 @@
 ### by Steven Wooding
 Clash of Clans Clan Manager web app
 
-## What is is and does
+## What it is and does
 This is a web app for collecting and analysing clan statistics. Its key feature
 is the tracking of total troop donations over many seasons and tracking when
 a member last donated troops.
