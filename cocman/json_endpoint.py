@@ -6,8 +6,8 @@ from cocman import app
 from cocman.database_setup import Clan, Member
 from cocman.connect_to_database import connect_to_database
 
-@app.route('/clandata/mainclan/JSON/')
-@app.route('/clandata/<clan_tag>/JSON/')
+@app.route('/api/clandata/mainclan/JSON/')
+@app.route('/api/clandata/<clan_tag>/JSON/')
 def clandata_json(clan_tag=None):
     """Returns data about the clan and its members in JSON format.
 

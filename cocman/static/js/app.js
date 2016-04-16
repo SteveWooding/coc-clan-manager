@@ -9,7 +9,7 @@
     $scope.clanData = {};
 
     // Get the default clan data
-    $http.get('/clandata/mainclan/JSON/')
+    $http.get('/api/clandata/mainclan/JSON/')
       .then(function (response) {
           $scope.clanData = response.data;
       }, function (response) {

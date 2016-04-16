@@ -13,7 +13,7 @@ def index():
         return app.send_static_file('index.html')
 
 
-@app.route('/update/<update_key>/')
+@app.route('/api/update/<update_key>/')
 def update(update_key):
     """Update the database, given the update key.
 
