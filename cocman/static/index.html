@@ -115,7 +115,10 @@
                 <td class="hidden-xs hidden-sm">
                   {{member.firstTrackedTime | date:'dd-MMM-yy'}}
                 </td>
-                <td>{{member.lastActiveTime | date:'dd-MMM-yy'}}</td>
+                <td>
+                  {{(member.lastActiveTime === member.firstTrackedTime) ? '—'
+                    : member.lastActiveTime | date:'dd-MMM-yy'}}
+                </td>
               </tr>
             </tbody>
           </table>
