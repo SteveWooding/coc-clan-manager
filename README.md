@@ -1,6 +1,7 @@
-# coc-clan-manager
+# CoC Clan Manager
 ### by Steven Wooding
-Clash of Clans Clan Manager web app
+
+![Screenshot of CoC Clan Manager](cocman/static/images/screenshot.png)
 
 ## What it is and does
 This is a web app for collecting and analysing clan statistics. Its key feature
