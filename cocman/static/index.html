@@ -22,7 +22,7 @@
         <div class="row" ng-hide="errorMsg">
           <div class="col-sm-6">
               <img ng-src="{{clanData.badgeUrlMedium}}" class="img-responsive center-block"
-                   id="clan-shield">
+                   id="clan-shield" ng-click="update()">
               <h1 class="clan-level">Level {{clanData.clanLevel}}</h1>
           </div>
           <div class="col-sm-3 col-xs-6">

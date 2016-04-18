@@ -9,12 +9,18 @@
     $scope.clanData = {};
 
     // Get the default clan data
-    $http.get('/api/clandata/mainclan/JSON/')
-      .then(function (response) {
+    $scope.update = function() {
+      $http.get('/api/clandata/mainclan/JSON/')
+        .then(function(response) {
           $scope.clanData = response.data;
-      }, function (response) {
-        $scope.errorMsg = response.statusText + ': ' + response.data.error;
-      });
+        }, function(response) {
+          $scope.errorMsg = response.statusText + ': ' + response.data.error;
+        });
+    };
+
+    // Run the update function on the first load of the controller.
+    $scope.update();
+
 
     // Allow users to sort (forwards and backwards) on column headings.
     $scope.orderCol = 'clanRank';
