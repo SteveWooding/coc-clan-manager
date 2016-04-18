@@ -79,14 +79,15 @@ def update_database(clan_tag):
 
         except NoResultFound:
             # Create a new member object with required data
+            now = datetime.datetime.now()
             member = Member(
                 clan=clan,
                 tag=member_data['tag'],
                 name=member_data['name'],
                 role=convert_role(member_data['role']),
                 exp_level=member_data['expLevel'],
-                first_tracked_time=datetime.datetime.now(),
-                last_active_time=datetime.datetime.now()
+                first_tracked_time=now,
+                last_active_time=now
             )
 
         # Update optional member data
