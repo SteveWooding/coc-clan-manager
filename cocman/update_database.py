@@ -76,6 +76,7 @@ def update_database(clan_tag):
             member.name = member_data['name']
             member.role = convert_role(member_data['role'])
             member.exp_level = member_data['expLevel']
+            member.trophies = member_data['trophies']
 
         except NoResultFound:
             # Create a new member object with required data
@@ -86,6 +87,7 @@ def update_database(clan_tag):
                 name=member_data['name'],
                 role=convert_role(member_data['role']),
                 exp_level=member_data['expLevel'],
+                trophies=member_data['trophies'],
                 first_tracked_time=now,
                 last_active_time=now
             )

@@ -93,6 +93,7 @@ class Member(Base):
     name = Column(String(64), nullable=False)
     role = Column(String(16), nullable=False)
     exp_level = Column(Integer, nullable=False)
+    trophies = Column(Integer, nullable=False)
     league_id = Column(Integer)
     league_name = Column(String(64))
     league_icon_tiny = Column(String(256))
@@ -117,6 +118,7 @@ class Member(Base):
             'name': self.name,
             'role': self.role,
             'expLevel': self.exp_level,
+            'trophies': self.trophies,
             'leagueId': self.league_id,
             'leagueName': self.league_name,
             'leagueIconTiny': self.league_icon_tiny,
