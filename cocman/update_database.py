@@ -100,50 +100,9 @@ def update_database(clan_tag):
         # Add this member to the current member tags list.
         current_member_tags.append(member_data['tag'])
 
-        # Update the current and total donations
-        if member.current_donations:
-            if member_data['donations'] > member.current_donations:
-                # Update the last active date and total donations
-                member.last_active_time = datetime.datetime.now()
-                member.total_donations += (member_data['donations']
-                    - member.current_donations)
-            elif member_data['donations'] < member.current_donations:
-                # At the end of the season, donation data is zeroed.
-                # Just add what we know now to the total donations.
-                member.total_donations += member_data['donations']
-                # Check for activity since the reset
-                if member_data['donations'] > 0:
-                    member.last_active_time = datetime.datetime.now()
-        else:
-            # This is the case of a new member we have no previous data for.
-            member.total_donations = member_data['donations']
-
-        # Update the current donations
-        member.current_donations = member_data['donations']
-
-        # Update the current and total donations received
-        if member.current_donations_rec:
-            if member_data['donationsReceived'] > member.current_donations_rec:
-                # Update the last active date and total donations
-                member.last_active_time = datetime.datetime.now()
-                member.total_donations_rec += (member_data['donationsReceived']
-                    - member.current_donations_rec)
-            elif (member_data['donationsReceived']
-                     < member.current_donations_rec):
-                # At the end of the season, donation data is zeroed.
-                # Just add what we know now to the total donations.
-                member.total_donations_rec += member_data['donationsReceived']
-                # Check for activity since the reset
-                if member_data['donationsReceived'] > 0:
-                    member.last_active_time = datetime.datetime.now()
-        else:
-            # This is the case of a new member we have no previous data for.
-            member.total_donations_rec = member_data['donationsReceived']
-
-        # Update the current donations
-        member.current_donations_rec = member_data['donationsReceived']
-
-        # TODO: Refactor the above two sections of code into a function
+        # Update member donations given and received
+        update_member_stats(member, member_data['donations'], False)
+        update_member_stats(member, member_data['donationsReceived'], True)
 
         # Commit the member object to the database
         session.add(member)
@@ -180,3 +139,43 @@ def convert_role(raw_role):
              'leader': 'Leader'}
 
     return roles[raw_role]
+
+
+def update_member_stats(member, latest_num_donations, is_donations_rec):
+    if is_donations_rec is True:
+        current_donations_variable = 'current_donations_rec'
+        total_donations_variable = 'total_donations_rec'
+    else:
+        current_donations_variable = 'current_donations'
+        total_donations_variable = 'total_donations'
+
+    member_current_donations = getattr(member, current_donations_variable)
+    member_total_donations = getattr(member, total_donations_variable)
+
+    if member_current_donations:
+        if latest_num_donations > member_current_donations:
+            # Update the last active date and total donations
+            member.last_active_time = datetime.datetime.now()
+
+            new_total_donations = (member_total_donations
+                + (latest_num_donations - member_current_donations))
+
+            setattr(member, total_donations_variable, new_total_donations)
+
+        elif latest_num_donations < member_current_donations:
+            # At the end of the season, donation data is zeroed.
+            # Just add what we know now to the total donations.
+            new_total_donations = member_total_donations + latest_num_donations
+            setattr(member, total_donations_variable, new_total_donations)
+
+            # Check for activity since the reset
+            if latest_num_donations > 0:
+                member.last_active_time = datetime.datetime.now()
+
+    else:
+        # This is the case of a new member we have no previous data for, so
+        # just initalise the total donations to the first new data we have.
+        setattr(member, total_donations_variable, latest_num_donations)
+
+    # Update the current donations
+    setattr(member, current_donations_variable, latest_num_donations)
