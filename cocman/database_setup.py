@@ -72,6 +72,7 @@ class Member(Base):
         role (str): Type of member (e.g. member, admin (elder), coLeader,
             leader)
         exp_level (int): Experience level of the player.
+        trophies (int): The number of trophies a player currently has.
         league_id (int): ID of the league the player is currently in this
             season.
         clan_rank (int): Current rank of the player within the clan.
