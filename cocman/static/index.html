@@ -26,21 +26,37 @@
                    title="Click to refresh data...">
               <h1 class="clan-level">Level {{clanData.clanLevel}}</h1>
           </div>
-          <div class="col-sm-3 col-xs-6">
-            <h3>{{clanData.name}}</h3>
-            <h4>Total points</h4>
-            <h4>Wars Won</h4>
-            <h4>War Win Streak</h4>
-            <h4>Longest War Win Streak</h4>
-            <h4>Members</h4>
-          </div>
-          <div class="col-sm-3 col-xs-6 text-right">
-            <h3>{{clanData.tag}}</h3>
-            <h4>{{clanData.clanPoints}}</h4>
-            <h4>{{clanData.warWins}}</h4>
-            <h4>{{clanData.warWinStreak}}</h4>
-            <h4>{{clanData.warWinStreakHigh}}</h4>
-            <h4>{{clanData.numMembers}}/50</h4>
+          <div class="col-sm-6">
+            <table class="table table-condensed table-no-bordered" id="clan-stats">
+              <thead>
+                <tr>
+                  <th>{{clanData.name}}</th>
+                  <th>{{clanData.tag}}</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Total points</td>
+                  <td>{{clanData.clanPoints}}</td>
+                </tr>
+                <tr>
+                  <td>Wars Won</td>
+                  <td>{{clanData.warWins}}</td>
+                </tr>
+                <tr>
+                  <td>War Win Streak</td>
+                  <td>{{clanData.warWinStreak}}</td>
+                </tr>
+                <tr>
+                  <td>Longest War Win Streak</td>
+                  <td>{{clanData.warWinStreakHigh}}</td>
+                </tr>
+                <tr>
+                  <td>Members</td>
+                  <td>{{clanData.numMembers}}/50</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
 
