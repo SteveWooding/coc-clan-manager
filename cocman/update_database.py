@@ -33,7 +33,8 @@ def update_database(clan_tag):
         # Create a new clan object
         clan = Clan(
             name=clan_data['name'],
-            tag=clan_data['tag']
+            tag=clan_data['tag'],
+            war_win_streak_high=0
         )
 
     # Update optional clan data items
@@ -46,6 +47,9 @@ def update_database(clan_tag):
     clan.war_win_streak = clan_data['warWinStreak']
     clan.required_trophies = clan_data['requiredTrophies']
 
+    # Update war win streak all time record
+    if clan_data['warWinStreak'] > clan.war_win_streak_high:
+        clan.war_win_streak_high = clan_data['warWinStreak']
 
     # Commit the clan object to the database
     session.add(clan)

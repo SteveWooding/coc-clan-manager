@@ -21,6 +21,7 @@ class Clan(Base):
         clan_level (int): The level of the clan.
         war_wins (int): Number of war wins the clan has achieved.
         war_win_streak (int): Number of war wins in a row.
+        war_win_streak_high (int): Highest number of war wins in a row.
         clan_points (int): The total points of the clan.
         required_trophies (int): Number of trophies required to join the clan.
         num_members (int): The number of members in the clan.
@@ -36,6 +37,7 @@ class Clan(Base):
     clan_level = Column(Integer)
     war_wins = Column(Integer)
     war_win_streak = Column(Integer)
+    war_win_streak_high = Column(Integer)
     clan_points = Column(Integer)
     required_trophies = Column(Integer)
     num_members = Column(Integer)
@@ -54,6 +56,7 @@ class Clan(Base):
             'clanLevel': self.clan_level,
             'warWins': self.war_wins,
             'warWinStreak': self.war_win_streak,
+            'warWinStreakHigh': self.war_win_streak_high,
             'clanPoints': self.clan_points,
             'requiredTrophies': self.required_trophies,
             'numMembers': self.num_members,
