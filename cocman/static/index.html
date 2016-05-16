@@ -135,8 +135,10 @@
                   {{member.firstTrackedTime | date:'dd-MMM-yy'}}
                 </td>
                 <td>
-                  {{(member.lastActiveTime === member.firstTrackedTime) ? '—'
-                    : member.lastActiveTime | date:'dd-MMM-yy'}}
+                  <span ng-hide="member.lastActiveTime === member.firstTrackedTime"
+                        title="{{member.lastActiveTime | date: 'HH:mm'}} UTC" bs-tooltip>
+                    {{member.lastActiveTime | date:'dd-MMM-yy'}}
+                  </span>
                 </td>
               </tr>
             </tbody>
