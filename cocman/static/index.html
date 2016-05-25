@@ -41,15 +41,27 @@
                 </tr>
                 <tr>
                   <td>Wars Won</td>
-                  <td>{{clanData.warWins}}</td>
+                  <td>
+                    <span title="{{ (clanData.warWins * 100) / (clanData.totalNumWars) | number :1 }}%" bs-tooltip>
+                      {{clanData.warWins}}
+                    </span>
+                  </td>
                 </tr>
                 <tr>
                   <td>Wars Tied</td>
-                  <td>{{clanData.warTies}}</td>
+                  <td>
+                    <span title="{{ (clanData.warTies * 100) / (clanData.totalNumWars) | number :1 }}%" bs-tooltip>
+                    {{clanData.warTies}}
+                    </span>
+                  </td>
                 </tr>
                 <tr>
                   <td>Wars Lost</td>
-                  <td>{{clanData.warLosses}}</td>
+                  <td>
+                    <span title="{{ (clanData.warLosses * 100) / (clanData.totalNumWars) | number :1 }}%" bs-tooltip>
+                    {{clanData.warLosses}}
+                    </span>
+                  </td>
                 </tr>
                 <tr>
                   <td>War Win Streak</td>
