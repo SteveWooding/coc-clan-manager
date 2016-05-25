@@ -60,7 +60,28 @@ class CocmanUpdateMemberStatsTest(unittest.TestCase):
         self.assertEqual(self.member.total_donations_rec, 813)
 
 
+class CocmanUpdateMemberStatsTest2(unittest.TestCase):
+    def setUp(self):
+        # Create a member with some data for each test.
+        self.member = Member()
+        self.member.total_donations = 1000
+        self.member.total_donations_rec = 800
+        self.member.current_donations = 0
+        self.member.current_donations_rec = 0
+        self.member.last_active_time = datetime.datetime(2016, 1, 1)
+
+    def test_returning_member(self):
+        # Test to make sure a returning member keeps their total donations.
+        update_member_stats(self.member, 0, False)
+        self.assertEqual(self.member.total_donations, 1000)
+        self.assertEqual(self.member.total_donations_rec, 800)
+
+
 if __name__ == '__main__':
     suite = unittest.TestLoader().loadTestsFromTestCase(
         CocmanUpdateMemberStatsTest)
+    unittest.TextTestRunner(verbosity=2).run(suite)
+
+    suite = unittest.TestLoader().loadTestsFromTestCase(
+    CocmanUpdateMemberStatsTest2)
     unittest.TextTestRunner(verbosity=2).run(suite)
