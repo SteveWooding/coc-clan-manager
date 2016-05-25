@@ -180,7 +180,7 @@ def update_member_stats(member, latest_num_donations, is_donations_rec):
             if latest_num_donations > 0:
                 member.last_active_time = datetime.datetime.now()
 
-    elif member_total_donations == 0:
+    elif member_total_donations is None:
         # This is the case of a new member we have no previous data for, so
         # just initalise the total donations to the first new data we have.
         setattr(member, total_donations_variable, latest_num_donations)
