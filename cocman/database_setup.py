@@ -36,6 +36,8 @@ class Clan(Base):
     badge_url_small = Column(String(256))
     clan_level = Column(Integer)
     war_wins = Column(Integer)
+    war_ties = Column(Integer)
+    war_losses = Column(Integer)
     war_win_streak = Column(Integer)
     war_win_streak_high = Column(Integer)
     clan_points = Column(Integer)
@@ -55,6 +57,8 @@ class Clan(Base):
             'badgeUrlSmall': self.badge_url_small,
             'clanLevel': self.clan_level,
             'warWins': self.war_wins,
+            'warTies': self.war_ties,
+            'warLosses': self.war_losses,
             'warWinStreak': self.war_win_streak,
             'warWinStreakHigh': self.war_win_streak_high,
             'clanPoints': self.clan_points,

@@ -22,7 +22,7 @@ table {
 }
 
 table#clan-stats {
-    font-size: 1.4em;
+    font-size: 1.3em;
 }
 
 table#clan-stats > thead > tr > th:nth-child(2) {

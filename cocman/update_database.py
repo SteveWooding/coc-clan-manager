@@ -44,6 +44,8 @@ def update_database(clan_tag):
     clan.clan_points = clan_data['clanPoints']
     clan.num_members = clan_data['members']
     clan.war_wins = clan_data['warWins']
+    clan.war_ties = clan_data['warTies']
+    clan.war_losses = clan_data['warLosses']
     clan.war_win_streak = clan_data['warWinStreak']
     clan.required_trophies = clan_data['requiredTrophies']
 
