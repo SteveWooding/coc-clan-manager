@@ -68,13 +68,27 @@ class CocmanUpdateMemberStatsTest2(unittest.TestCase):
         self.member.total_donations_rec = 800
         self.member.current_donations = 0
         self.member.current_donations_rec = 0
-        self.member.last_active_time = datetime.datetime(2016, 1, 1)
 
     def test_returning_member(self):
         # Test to make sure a returning member keeps their total donations.
         update_member_stats(self.member, 0, False)
         self.assertEqual(self.member.total_donations, 1000)
         self.assertEqual(self.member.total_donations_rec, 800)
+
+
+class CocmanUpdateMemberStatsTest3(unittest.TestCase):
+    def setUp(self):
+        # Create a member with some data for each test.
+        self.member = Member()
+        self.member.total_donations = 24
+        self.member.total_donations_rec = 0
+        self.member.current_donations = 24
+        self.member.current_donations_rec = 17
+
+    def test_current_larger_than_total(self):
+        update_member_stats(self.member, 18, True)
+        self.assertEqual(self.member.total_donations, 24)
+        self.assertEqual(self.member.total_donations_rec, 18)
 
 
 if __name__ == '__main__':
@@ -84,4 +98,8 @@ if __name__ == '__main__':
 
     suite = unittest.TestLoader().loadTestsFromTestCase(
     CocmanUpdateMemberStatsTest2)
+    unittest.TextTestRunner(verbosity=2).run(suite)
+
+    suite = unittest.TestLoader().loadTestsFromTestCase(
+    CocmanUpdateMemberStatsTest3)
     unittest.TextTestRunner(verbosity=2).run(suite)
