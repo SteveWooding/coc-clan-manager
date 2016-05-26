@@ -168,20 +168,27 @@ def update_member_stats(member, latest_num_donations, is_donations_rec):
             # Update the last active date and total donations
             member.last_active_time = datetime.datetime.now()
 
+            # Calculate the new total donations amount
             new_total_donations = (member_total_donations
                 + (latest_num_donations - member_current_donations))
-
-            setattr(member, total_donations_variable, new_total_donations)
 
         elif latest_num_donations < member_current_donations:
             # At the end of the season, donation data is zeroed.
             # Just add what we know now to the total donations.
             new_total_donations = member_total_donations + latest_num_donations
-            setattr(member, total_donations_variable, new_total_donations)
 
             # Check for activity since the reset
             if latest_num_donations > 0:
                 member.last_active_time = datetime.datetime.now()
+        else:
+            new_total_donations = latest_num_donations
+
+        # Make sure the new total donations is at least as much as the
+        # latest dontations (this is an issue for returning members)
+        if new_total_donations < latest_num_donations:
+            new_total_donations = latest_num_donations
+
+        setattr(member, total_donations_variable, new_total_donations)
 
     elif member_total_donations is None:
         # This is the case of a new member we have no previous data for, so
