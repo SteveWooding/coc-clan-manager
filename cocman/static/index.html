@@ -42,12 +42,12 @@
                 <tr>
                   <td>Wars Won</td>
                   <td>
-                    <span title="{{ (clanData.warWins * 100) / (clanData.totalNumWars) | number :1 }}%" bs-tooltip>
+                    <span title="{{ clanData.warLosses ? ((clanData.warWins * 100) / (clanData.totalNumWars) | number :1) : '‒ ' }}%" bs-tooltip>
                       {{clanData.warWins}}
                     </span>
                   </td>
                 </tr>
-                <tr>
+                <tr ng-show="clanData.warTies">
                   <td>Wars Tied</td>
                   <td>
                     <span title="{{ (clanData.warTies * 100) / (clanData.totalNumWars) | number :1 }}%" bs-tooltip>
@@ -55,7 +55,7 @@
                     </span>
                   </td>
                 </tr>
-                <tr>
+                <tr ng-show="clanData.warLosses">
                   <td>Wars Lost</td>
                   <td>
                     <span title="{{ (clanData.warLosses * 100) / (clanData.totalNumWars) | number :1 }}%" bs-tooltip>
