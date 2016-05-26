@@ -44,10 +44,13 @@ def update_database(clan_tag):
     clan.clan_points = clan_data['clanPoints']
     clan.num_members = clan_data['members']
     clan.war_wins = clan_data['warWins']
-    clan.war_ties = clan_data['warTies']
-    clan.war_losses = clan_data['warLosses']
     clan.war_win_streak = clan_data['warWinStreak']
     clan.required_trophies = clan_data['requiredTrophies']
+
+    # Update war ties and losses, if the clan has a public war log
+    if clan_data['isWarLogPublic'] is True:
+        clan.war_ties = clan_data['warTies']
+        clan.war_losses = clan_data['warLosses']
 
     # Update war win streak all time record
     if clan_data['warWinStreak'] > clan.war_win_streak_high:
