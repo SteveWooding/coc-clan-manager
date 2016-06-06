@@ -163,7 +163,7 @@ def update_member_stats(member, latest_num_donations, is_donations_rec):
     member_current_donations = getattr(member, current_donations_variable)
     member_total_donations = getattr(member, total_donations_variable)
 
-    if member_current_donations:
+    if member_current_donations is not None:
         if latest_num_donations > member_current_donations:
             # Update the last active date and total donations
             member.last_active_time = datetime.datetime.now()
@@ -181,7 +181,7 @@ def update_member_stats(member, latest_num_donations, is_donations_rec):
             if latest_num_donations > 0:
                 member.last_active_time = datetime.datetime.now()
         else:
-            new_total_donations = latest_num_donations
+            new_total_donations = member_total_donations
 
         # Make sure the new total donations is at least as much as the
         # latest dontations (this is an issue for returning members)
@@ -190,7 +190,7 @@ def update_member_stats(member, latest_num_donations, is_donations_rec):
 
         setattr(member, total_donations_variable, new_total_donations)
 
-    elif member_total_donations is None:
+    if member_total_donations is None:
         # This is the case of a new member we have no previous data for, so
         # just initalise the total donations to the first new data we have.
         setattr(member, total_donations_variable, latest_num_donations)
