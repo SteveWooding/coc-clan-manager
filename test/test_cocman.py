@@ -75,6 +75,11 @@ class CocmanUpdateMemberStatsTest2(unittest.TestCase):
         self.assertEqual(self.member.total_donations, 1000)
         self.assertEqual(self.member.total_donations_rec, 800)
 
+    def test_new_season(self):
+        update_member_stats(self.member, 13, False)
+        self.assertEqual(self.member.total_donations, 1013)
+        self.assertEqual(self.member.total_donations_rec, 800)
+
 
 class CocmanUpdateMemberStatsTest3(unittest.TestCase):
     def setUp(self):
@@ -91,15 +96,32 @@ class CocmanUpdateMemberStatsTest3(unittest.TestCase):
         self.assertEqual(self.member.total_donations_rec, 18)
 
 
+class CocmanUpdateMemberStatsTest4(unittest.TestCase):
+    def setUp(self):
+        # Create a member with some data for each test.
+        self.member = Member()
+
+    def test_new_member(self):
+        update_member_stats(self.member, 42, False)
+        self.assertEqual(self.member.current_donations, 42)
+        self.assertEqual(self.member.current_donations_rec, None)
+        self.assertEqual(self.member.total_donations, 42)
+        self.assertEqual(self.member.total_donations_rec, None)
+
+
 if __name__ == '__main__':
     suite = unittest.TestLoader().loadTestsFromTestCase(
         CocmanUpdateMemberStatsTest)
     unittest.TextTestRunner(verbosity=2).run(suite)
 
     suite = unittest.TestLoader().loadTestsFromTestCase(
-    CocmanUpdateMemberStatsTest2)
+        CocmanUpdateMemberStatsTest2)
     unittest.TextTestRunner(verbosity=2).run(suite)
 
     suite = unittest.TestLoader().loadTestsFromTestCase(
-    CocmanUpdateMemberStatsTest3)
+        CocmanUpdateMemberStatsTest3)
+    unittest.TextTestRunner(verbosity=2).run(suite)
+
+    suite = unittest.TestLoader().loadTestsFromTestCase(
+        CocmanUpdateMemberStatsTest4)
     unittest.TextTestRunner(verbosity=2).run(suite)
