@@ -146,7 +146,7 @@
             </thead>
             <tbody>
               <tr ng-repeat="member in clanData.memberList | orderBy:orderCol:reverse">
-                <td><span title="{{member.trophies}}" bs-tooltip>{{member.clanRank}}</span></td>
+                <td><span title="{{member.trophies}} Trophies" bs-tooltip>{{$index + 1}} | {{member.clanRank}}</span></td>
                 <td><img ng-src="{{member.leagueIconTiny}}" title="{{member.leagueName}}"></td>
                 <td>{{member.name}}</td>
                 <td>{{member.role}}</td>
