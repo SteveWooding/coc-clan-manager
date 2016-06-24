@@ -11,9 +11,7 @@
 
     // Define date variables for calculating daily active users.
     $scope.numDailyUsers = 0;
-    var timeNow = new Date();
     var oneDayMs = 86400000;
-    var timeOneDayAgo = timeNow - oneDayMs;
 
     // Get the default clan data
     $scope.update = function() {
@@ -26,6 +24,10 @@
             $scope.clanData.warTies + $scope.clanData.warLosses);
 
           // Calculate the number of active users in the past 24 hours
+          $scope.numDailyUsers = 0;
+          var timeNow = new Date();
+          var timeOneDayAgo = timeNow - oneDayMs;
+
           $scope.clanData.memberList.forEach(function(member) {
             if (Date.parse(member.lastActiveTime) > timeOneDayAgo) {
               $scope.numDailyUsers++;
