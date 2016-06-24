@@ -22,9 +22,11 @@
         <div class="row" ng-hide="errorMsg">
           <div class="col-sm-6">
               <img ng-src="{{clanData.badgeUrlMedium}}" class="img-responsive center-block"
-                   id="clan-shield" ng-click="update()" bs-tooltip data-placement="right"
-                   title="Click to refresh data...">
+                   id="clan-shield">
               <h1 class="clan-level">Level {{clanData.clanLevel}}</h1>
+              <button class="btn btn-primary center-block" ng-click="update()">
+                Refresh Data
+              </button>
           </div>
           <div class="col-sm-6">
             <table class="table table-condensed table-no-bordered" id="clan-stats">
